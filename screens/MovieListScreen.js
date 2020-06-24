@@ -19,6 +19,10 @@ export default class MovieListScreen extends React.Component {
 		this.setState({searchField});
 	};
 
+	handleSelectMovie = movie => {
+		this.props.navigation.push('Movie', movie);
+	};
+
 	render() {
 		return (
 			<View style={styles.container}>
@@ -31,7 +35,10 @@ export default class MovieListScreen extends React.Component {
 					<Text style={styles.alertText}>No results</Text>
 				}
 				{ this.state.matchingResources.length > 0 && 
-					<MovieList movies={this.state.matchingResources}></MovieList>
+					<MovieList 
+						movies={this.state.matchingResources}
+						onSelectMovie={this.handleSelectMovie}>
+					</MovieList>
 				}
 			</View>
 		);

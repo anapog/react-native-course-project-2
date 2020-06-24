@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, FlatList, View, StyleSheet } from 'react-native';
+import { Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
 
 const ListItem = (props) => {
 	const capitalizeString = (str) => {
@@ -7,19 +7,23 @@ const ListItem = (props) => {
 	};
 
 	return (
-		<View style={styles.listEntry}>
+		<TouchableOpacity style={styles.listEntry} onPress={() => props.onSelectMovie(props)}>
 			<Text>{capitalizeString(props.Title)}</Text>
 			<Text>{capitalizeString(props.Year)} - {capitalizeString(props.Type)}</Text>
-		</View>
+		</TouchableOpacity>
 	);
 
 }
 
 export const MovieList = props => {
-	const renderItem = ({ item }) => <ListItem {...item}></ListItem>;
+	const renderItem = ({ item }) => <ListItem {...item} onSelectMovie={props.onSelectMovie}></ListItem>;
 
 	return (
-		<FlatList renderItem={renderItem} data={props.movies} keyExtractor={item => item.imdbID}/>
+		<FlatList 
+			renderItem={renderItem} 
+			data={props.movies} 
+			keyExtractor={item => item.imdbID}
+		/>
 	);
 }
 
