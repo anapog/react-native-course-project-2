@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, ScrollView, View, StyleSheet } from 'react-native';
+import { Text, FlatList, View, StyleSheet } from 'react-native';
 
 const ListItem = (props) => {
 	const capitalizeString = (str) => {
@@ -16,13 +16,10 @@ const ListItem = (props) => {
 }
 
 export const MovieList = props => {
-	const movies = props.movies;
-	const movieList = movies.map(movie => <ListItem key={movie.imdbID} {...movie}></ListItem>);
-	
+	const renderItem = ({ item }) => <ListItem {...item}></ListItem>;
+
 	return (
-		<ScrollView>
-			{movieList}
-		</ScrollView>
+		<FlatList renderItem={renderItem} data={props.movies} keyExtractor={item => item.imdbID}/>
 	);
 }
 
