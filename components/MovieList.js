@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, ScrollView, View, StyleSheet } from 'react-native';
 
 const ListItem = (props) => {
 	const capitalizeString = (str) => {
@@ -20,9 +20,9 @@ export const MovieList = props => {
 	const movieList = movies.map(movie => <ListItem key={movie.imdbID} {...movie}></ListItem>);
 	
 	return (
-		<View>
+		<ScrollView>
 			{movieList}
-		</View>
+		</ScrollView>
 	);
 }
 

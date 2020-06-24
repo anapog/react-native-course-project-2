@@ -43,7 +43,9 @@ const styles = StyleSheet.create({
 		flex: 1,
 		backgroundColor: '#fff',
 		justifyContent: 'flex-start',
-		padding: 20
+		paddingTop: 20,
+		paddingLeft: 20 
+		
 	},
 	alertText: {
 		color: '#a41034'
