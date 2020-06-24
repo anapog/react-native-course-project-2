@@ -1,21 +1,28 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import 'react-native-gesture-handler';
+import { createStackNavigator } from 'react-navigation-stack';
+import { createAppContainer } from 'react-navigation';
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-      </View>
-    );
-  }
-}
+import MovieListScreen from './screens/MovieListScreen';
+import MovieScreen from './screens/MovieScreen';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+
+const AppNavigator = createStackNavigator(
+	{
+		MovieList: MovieListScreen,
+		Movie: MovieScreen,
+	},
+	{
+		initialRouteName: "MovieList",
+		defaultNavigationOptions: {
+			headerTintColor: "#a41034",
+			headerStyle: {
+				backgroundColor: "#fff",
+			},
+			headerTitleAlign: 'center',
+
+		}
 });
+
+const App = createAppContainer(AppNavigator);
+
+export default App;
