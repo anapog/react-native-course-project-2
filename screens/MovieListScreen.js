@@ -2,7 +2,8 @@ import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 
 import { SearchField } from '../components/SearchField';
-
+import { MovieList } from '../components/MovieList';
+import { search } from '../mockData';
 
 export default class MovieListScreen extends React.Component {
 	static navigationOptions = () => ({
@@ -11,7 +12,7 @@ export default class MovieListScreen extends React.Component {
 
 	state = {
 		searchString: '',
-		matchingResources: [],
+		matchingResources: search.Search,
 	};
 
 	setSearchField = (searchField) => {
@@ -28,6 +29,9 @@ export default class MovieListScreen extends React.Component {
 				</SearchField>
 				{ this.state.matchingResources.length < 1 && 
 					<Text style={styles.alertText}>No results</Text>
+				}
+				{ this.state.matchingResources.length > 0 && 
+					<MovieList movies={this.state.matchingResources}></MovieList>
 				}
 			</View>
 		);
