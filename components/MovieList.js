@@ -8,8 +8,8 @@ const ListItem = (props) => {
 
 	return (
 		<TouchableOpacity style={styles.listEntry} onPress={() => props.onSelectMovie(props)}>
-			<Text>{capitalizeString(props.Title)}</Text>
-			<Text>{props.Year} - {capitalizeString(props.Type)}</Text>
+			<Text>{capitalizeString(props.title)}</Text>
+			<Text>{props.year} - {capitalizeString(props.type)}</Text>
 		</TouchableOpacity>
 	);
 

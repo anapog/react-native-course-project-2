@@ -3,7 +3,7 @@ import { View, StyleSheet, Text } from 'react-native';
 
 import { SearchField } from '../components/SearchField';
 import { MovieList } from '../components/MovieList';
-import { search } from '../mockData';
+import { fetchMovies } from '../api';
 
 export default class MovieListScreen extends React.Component {
 	static navigationOptions = () => ({
@@ -12,11 +12,22 @@ export default class MovieListScreen extends React.Component {
 
 	state = {
 		searchString: '',
-		matchingResources: search.Search,
+		matchingResources: [],
 	};
+
+	getMovies = async (searchField) => {
+		const result = await fetchMovies(searchField);
+		if (result) {
+			this.setState({matchingResources: result});
+		}
+	}
 
 	setSearchField = (searchField) => {
 		this.setState({searchField});
+		
+		if (searchField.length) {
+			this.getMovies(searchField);
+		}
 	};
 
 	handleSelectMovie = movie => {
