@@ -6,7 +6,7 @@
     "expo": "^37.0.12",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
-    "react-native": "0.61",
+    "react-native": "0.62",
     "react-native-gesture-handler": "^1.6.1",
     "react-native-safe-area-context": "0.7.3",
     "react-native-screens": "~2.2.0",
